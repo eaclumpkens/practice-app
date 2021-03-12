@@ -1,4 +1,5 @@
 const express = require('express');
+const PORT = process.env.PORT || 4000;
 const { ApolloServer, gql } = require('apollo-server-express');
  
 const typeDefs = gql`
@@ -18,6 +19,6 @@ const server = new ApolloServer({ typeDefs, resolvers });
 const app = express();
 server.applyMiddleware({ app });
  
-app.listen({ port: 4000 }, () =>
+app.listen(PORT, () =>
   console.log('Now browse to http://localhost:4000' + server.graphqlPath)
 );
